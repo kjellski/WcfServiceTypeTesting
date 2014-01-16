@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="PerSessionWcfService.PerSessionWcfService" CodeBehind="PerSessionWcfService.svc.cs" %>
