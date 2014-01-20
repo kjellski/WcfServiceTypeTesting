@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerSessionWcfService", "Per
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingletonWcfService", "SingletonWcfService\SingletonWcfService.csproj", "{AD815F93-ED77-4C89-A4AA-A9D0AE995220}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLib", "SharedLib\SharedLib.csproj", "{5C0CDE44-5B41-4DBB-A5DC-FADE74882F7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHostingApplication", "ServiceHostingApplication\ServiceHostingApplication.csproj", "{6246FE3D-337D-40ED-9CE7-6A76B156F662}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{AD815F93-ED77-4C89-A4AA-A9D0AE995220}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD815F93-ED77-4C89-A4AA-A9D0AE995220}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD815F93-ED77-4C89-A4AA-A9D0AE995220}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C0CDE44-5B41-4DBB-A5DC-FADE74882F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0CDE44-5B41-4DBB-A5DC-FADE74882F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0CDE44-5B41-4DBB-A5DC-FADE74882F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0CDE44-5B41-4DBB-A5DC-FADE74882F7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6246FE3D-337D-40ED-9CE7-6A76B156F662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6246FE3D-337D-40ED-9CE7-6A76B156F662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6246FE3D-337D-40ED-9CE7-6A76B156F662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6246FE3D-337D-40ED-9CE7-6A76B156F662}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.ServiceModel;
+using System.Threading;
+using Common.Logging;
+using SharedLib;
 
 namespace SingletonWcfService
 {
@@ -8,13 +11,40 @@ namespace SingletonWcfService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)] 
     public class SingletonWcfService : ISingletonWcfService
     {
+        public readonly ILog Log = LogManager.GetCurrentClassLogger();
+
+        public Guid SleepForMilliseconds(int ms, Guid guid)
+        {
+            Log.Info("SleepForMilliseconds(int ms = " + ms + ", Guid guid = " + guid + ")");
+            Thread.Sleep(ms);
+            return guid;
+        }
+
+        public Guid BusySleepForMilliseconds(int ms, Guid guid)
+        {
+            Log.Info("SleepForMilliseconds(int ms = " + ms + ", Guid guid = " + guid + ")");
+            var now = DateTime.UtcNow;
+            var until = now + TimeSpan.FromMilliseconds(ms);
+
+            while (true)
+            {
+                if (until > DateTime.UtcNow)
+                    break;
+            }
+
+            return guid;
+        }
+
         public string GetData(int value)
         {
+            Log.InfoFormat("GetData({0});", value);
             return string.Format("You entered: {0}", value);
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
+            Log.InfoFormat("GetDataUsingDataContract({0});", composite);
+
             if (composite == null)
             {
                 throw new ArgumentNullException("composite");

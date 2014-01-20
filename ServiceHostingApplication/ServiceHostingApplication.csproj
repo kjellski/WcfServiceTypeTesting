@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6246FE3D-337D-40ED-9CE7-6A76B156F662}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServiceHostingApplication</RootNamespace>
+    <AssemblyName>ServiceHostingApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\PerCallWcfServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PerSessionWcfServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SingletonWcfServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Service References\PerCallWcfServiceClient\PerCallWcfService.wsdl" />
+    <None Include="Service References\PerCallWcfServiceClient\PerCallWcfService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerCallWcfServiceClient\PerCallWcfService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerCallWcfServiceClient\PerCallWcfService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerCallWcfServiceClient\ServiceHostingApplication.PerCallWcfServiceClient.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService.wsdl" />
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerSessionWcfServiceClient\ServiceHostingApplication.PerSessionWcfServiceClient.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SingletonWcfServiceClient\ServiceHostingApplication.SingletonWcfServiceClient.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService.wsdl" />
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PerCallWcfService\PerCallWcfService.csproj">
+      <Project>{6A649B65-1770-40AD-B4B1-272EFE943C5B}</Project>
+      <Name>PerCallWcfService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PerSessionWcfService\PerSessionWcfService.csproj">
+      <Project>{521FE597-0B96-402F-B43D-2E1D2BB08208}</Project>
+      <Name>PerSessionWcfService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedLib\SharedLib.csproj">
+      <Project>{5c0cde44-5b41-4dbb-a5dc-fade74882f7a}</Project>
+      <Name>SharedLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SingletonWcfService\SingletonWcfService.csproj">
+      <Project>{AD815F93-ED77-4C89-A4AA-A9D0AE995220}</Project>
+      <Name>SingletonWcfService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\PerCallWcfServiceClient\" />
+    <WCFMetadataStorage Include="Service References\PerSessionWcfServiceClient\" />
+    <WCFMetadataStorage Include="Service References\SingletonWcfServiceClient\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerCallWcfServiceClient\PerCallWcfService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerCallWcfServiceClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerCallWcfServiceClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerCallWcfServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerSessionWcfServiceClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerSessionWcfServiceClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerSessionWcfServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SingletonWcfServiceClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SingletonWcfServiceClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SingletonWcfServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
