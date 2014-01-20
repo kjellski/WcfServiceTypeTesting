@@ -22,78 +22,15 @@ namespace ServiceHostingApplication
                 typeof (SingletonWcfService.SingletonWcfService)
             }, baseAddress);
 
-            const int messagesPerService = 1000;
+            const int messagesPerService = 3200;
             const int sleepingInMillisecondsPerCall = 100;
             const bool busyServiceCall = true;
 
-            PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
+            var pentester = new ServicePenetrator();
+            pentester.PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
+            //pentester.PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, !busyServiceCall);
+
             ShutdownAndClose(serviceHosts);
-        }
-
-        private static void PenetrateServices(int messagesPerService, int sleepingInMillisecondsPerCall, bool busyServiceCall)
-        {
-            Log.Info("Requesting " + messagesPerService + " msg * " + sleepingInMillisecondsPerCall + "ms");
-            PenetratePerCallService(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
-            PenetratePerSessionService(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
-            PenetrateSingletonService(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
-        }
-
-        private static void PenetratePerCallService(int messagesPerService, int sleepingInMillisecondsPerCall, bool busyServiceCall)
-        {
-            Log.Info("Starting to penetrate PerCallWcfService.");
-            var serviceClient = new PerCallWcfServiceClient.PerCallWcfServiceClient("BasicHttpBinding_IPerCallWcfService");
-            var tasks = new Task[messagesPerService];
-            for (int i = 0; i < messagesPerService; i++)
-            {
-                if (busyServiceCall)
-                    tasks[i] = serviceClient.BusySleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
-                else
-                    tasks[i] = serviceClient.SleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
-
-                if (i % 10 == 0 && i != 0)
-                    Log.Info("Sending request " + i + ".");
-            }
-            Task.WaitAll(tasks);
-            Log.Info("Finished penetrating PerCallWcfService.");
-        }
-
-        private static void PenetratePerSessionService(int messagesPerService, int sleepingInMillisecondsPerCall, bool busyServiceCall)
-        {
-            Log.Info("Starting to penetrate PerSessionWcfService.");
-            var serviceClient = new PerSessionWcfServiceClient.PerSessionWcfServiceClient("BasicHttpBinding_IPerSessionWcfService");
-            var tasks = new Task[messagesPerService];
-            for (int i = 0; i < messagesPerService; i++)
-            {
-                if (busyServiceCall)
-                    tasks[i] = serviceClient.BusySleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
-                else
-                    tasks[i] = serviceClient.SleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
-
-                if (i % 10 == 0 && i != 0)
-                    Log.Info("Sending request " + i + ".");
-            }
-            Task.WaitAll(tasks);
-            Log.Info("Finished penetrating PerSessionWcfService.");
-        }
-
-        private static void PenetrateSingletonService(int messagesPerService, int sleepingInMillisecondsPerCall, bool busyServiceCall)
-        {
-            Log.Info("Starting to penetrate SingletonWcfService.");
-            var serviceClient = new SingletonWcfServiceClient.SingletonWcfServiceClient("BasicHttpBinding_ISingletonWcfService");
-
-            var tasks = new Task[messagesPerService];
-            for (int i = 0; i < messagesPerService; i++)
-            {
-                if (busyServiceCall)
-                    tasks[i] = serviceClient.BusySleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
-                else
-                    tasks[i] = serviceClient.SleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
-
-                if (i % 10 == 0 && i != 0)
-                    Log.Info("Sending request " + i + ".");
-            }
-            Task.WaitAll(tasks);
-            Log.Info("Finished penetrating SingletonWcfService.");
         }
 
         private static void ShutdownAndClose(IEnumerable<ServiceHost> serviceHosts)
@@ -137,6 +74,8 @@ namespace ServiceHostingApplication
             };
 
             host.Description.Behaviors.Add(smb);
+            host.Opened += (sender, args) => Log.Info(typeOfService.Name + " Host opened");
+            
             return host;
         }
     }

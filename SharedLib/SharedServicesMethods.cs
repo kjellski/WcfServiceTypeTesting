@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using Common.Logging;
 
@@ -10,21 +11,27 @@ namespace SharedLib
 
         public Guid SleepForMilliseconds(int ms, Guid guid)
         {
-            Log.Debug("SleepForMilliseconds(int ms = " + ms + ", Guid guid = " + guid + ")");
+            var now = DateTime.UtcNow;
+
+            //Log.Debug("SleepForMilliseconds(int ms = " + ms + ", Guid guid = " + guid + ")");
             Thread.Sleep(ms);
+            Log.Info("SleepForMilliseconds(int ms = " + ms + ", Guid guid = " + guid + ") took " + (DateTime.UtcNow - now));
+
             return guid;
         }
 
         public Guid BusySleepForMilliseconds(int ms, Guid guid)
         {
-            Log.Debug("BusySleepForMilliseconds(int ms = " + ms + ", Guid guid = " + guid + ")");
-            DateTime until = DateTime.UtcNow + TimeSpan.FromMilliseconds(ms);
-
+            var now = DateTime.UtcNow;
+            
+            //Log.Debug("BusySleepForMilliseconds(int ms = " + ms + ", Guid guid = " + guid + ")");
+            DateTime until = now + TimeSpan.FromMilliseconds(ms);
             while (true)
             {
                 if (DateTime.UtcNow > until)
                     break;
             }
+            Log.Info("BusySleepForMilliseconds(int ms = " + ms + ", Guid guid = " + guid + ") took " + (DateTime.UtcNow - now));
 
             return guid;
         }
