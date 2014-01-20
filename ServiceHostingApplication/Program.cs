@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using System.Threading.Tasks;
 using Common.Logging;
 
 namespace ServiceHostingApplication
@@ -11,99 +12,101 @@ namespace ServiceHostingApplication
     {
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-        private static void Main(string[] args)
+        private static void Main()
         {
             const string baseAddress = "http://localhost:8080/";
-            List<ServiceHost> serviceHosts = CreateAndOpenServiceHosts(new List<Type>
+            IEnumerable<ServiceHost> serviceHosts = CreateAndOpenServiceHosts(new List<Type>
             {
                 typeof (PerCallWcfService.PerCallWcfService),
                 typeof (PerSessionWcfService.PerSessionWcfService),
                 typeof (SingletonWcfService.SingletonWcfService)
             }, baseAddress);
 
-            PenetrateServices(baseAddress);
+            const int messagesPerService = 1000;
+            const int sleepingInMillisecondsPerCall = 100;
+            const bool busyServiceCall = true;
 
+            PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
             ShutdownAndClose(serviceHosts);
         }
 
-        private static void PenetrateServices(String baseAddress)
+        private static void PenetrateServices(int messagesPerService, int sleepingInMillisecondsPerCall, bool busyServiceCall)
         {
-            const int messagesPerService = 10;
-            const int sleepingInMillisecondsPerCall = 1000;
             Log.Info("Requesting " + messagesPerService + " msg * " + sleepingInMillisecondsPerCall + "ms");
-            PenetratePerCallService(messagesPerService);
-            PenetratePerSessionService(messagesPerService);
-            PenetrateSingletonService(messagesPerService);
+            PenetratePerCallService(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
+            PenetratePerSessionService(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
+            PenetrateSingletonService(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
         }
 
-        private static void PenetratePerCallService(int messagesPerService)
+        private static void PenetratePerCallService(int messagesPerService, int sleepingInMillisecondsPerCall, bool busyServiceCall)
         {
+            Log.Info("Starting to penetrate PerCallWcfService.");
             var serviceClient = new PerCallWcfServiceClient.PerCallWcfServiceClient("BasicHttpBinding_IPerCallWcfService");
-
+            var tasks = new Task[messagesPerService];
             for (int i = 0; i < messagesPerService; i++)
             {
-                var ct = new PerCallWcfServiceClient.CompositeType
-                {
-                    BoolValue = true,
-                    StringValue = Guid.NewGuid().ToString()
-                };
-
-                serviceClient.GetDataUsingDataContract(ct);
-
-                if(i % 10 == 0 && i != 0)
-                    Log.Info("At request " + i + ".");
-            }
-        }
-
-        private static void PenetratePerSessionService(int messagesPerService)
-        {
-            var serviceClient = new PerSessionWcfServiceClient.PerSessionWcfServiceClient("BasicHttpBinding_IPerSessionWcfService");
-
-            for (int i = 0; i < messagesPerService; i++)
-            {
-                var ct = new PerSessionWcfServiceClient.CompositeType
-                {
-                    BoolValue = true,
-                    StringValue = Guid.NewGuid().ToString()
-                };
-
-                serviceClient.GetDataUsingDataContract(ct);
+                if (busyServiceCall)
+                    tasks[i] = serviceClient.BusySleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
+                else
+                    tasks[i] = serviceClient.SleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
 
                 if (i % 10 == 0 && i != 0)
-                    Log.Info("At request " + i + ".");
+                    Log.Info("Sending request " + i + ".");
             }
+            Task.WaitAll(tasks);
+            Log.Info("Finished penetrating PerCallWcfService.");
         }
 
-        private static void PenetrateSingletonService(int messagesPerService)
+        private static void PenetratePerSessionService(int messagesPerService, int sleepingInMillisecondsPerCall, bool busyServiceCall)
         {
+            Log.Info("Starting to penetrate PerSessionWcfService.");
+            var serviceClient = new PerSessionWcfServiceClient.PerSessionWcfServiceClient("BasicHttpBinding_IPerSessionWcfService");
+            var tasks = new Task[messagesPerService];
+            for (int i = 0; i < messagesPerService; i++)
+            {
+                if (busyServiceCall)
+                    tasks[i] = serviceClient.BusySleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
+                else
+                    tasks[i] = serviceClient.SleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
+
+                if (i % 10 == 0 && i != 0)
+                    Log.Info("Sending request " + i + ".");
+            }
+            Task.WaitAll(tasks);
+            Log.Info("Finished penetrating PerSessionWcfService.");
+        }
+
+        private static void PenetrateSingletonService(int messagesPerService, int sleepingInMillisecondsPerCall, bool busyServiceCall)
+        {
+            Log.Info("Starting to penetrate SingletonWcfService.");
             var serviceClient = new SingletonWcfServiceClient.SingletonWcfServiceClient("BasicHttpBinding_ISingletonWcfService");
 
+            var tasks = new Task[messagesPerService];
             for (int i = 0; i < messagesPerService; i++)
             {
-                var ct = new SingletonWcfServiceClient.CompositeType
-                {
-                    BoolValue = true,
-                    StringValue = Guid.NewGuid().ToString()
-                };
-
-                serviceClient.GetDataUsingDataContract(ct);
+                if (busyServiceCall)
+                    tasks[i] = serviceClient.BusySleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
+                else
+                    tasks[i] = serviceClient.SleepForMillisecondsAsync(sleepingInMillisecondsPerCall, new Guid());
 
                 if (i % 10 == 0 && i != 0)
-                    Log.Info("At request " + i + ".");
+                    Log.Info("Sending request " + i + ".");
             }
+            Task.WaitAll(tasks);
+            Log.Info("Finished penetrating SingletonWcfService.");
         }
 
-        private static void ShutdownAndClose(List<ServiceHost> serviceHosts)
+        private static void ShutdownAndClose(IEnumerable<ServiceHost> serviceHosts)
         {
             Log.Info("Press <Enter> to stop the services.");
             Console.ReadLine();
             CloseServiceHosts(serviceHosts);
         }
 
-        private static List<ServiceHost> CreateAndOpenServiceHosts(IEnumerable<Type> serviceTypes, String BaseAddress)
+        private static IEnumerable<ServiceHost> CreateAndOpenServiceHosts(IEnumerable<Type> serviceTypes, String baseAddress)
         {
-            var serviceHosts = serviceTypes.Select(serviceType => CreateConfiguredServiceHost(serviceType, BaseAddress)).ToList();
-            foreach (ServiceHost serviceHost in serviceHosts)
+            var serviceHosts = serviceTypes.Select(serviceType => CreateConfiguredServiceHost(serviceType, baseAddress)).ToList();
+            foreach (var serviceHost in serviceHosts)
             {
                 serviceHost.Open();
             }
@@ -127,11 +130,13 @@ namespace ServiceHostingApplication
             var host = new ServiceHost(typeOfService, new Uri(baseAddress + typeOfService.Name + ".svc"));
 
             // Enable metadata publishing.
-            var smb = new ServiceMetadataBehavior();
-            smb.HttpGetEnabled = true;
-            smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
-            host.Description.Behaviors.Add(smb);
+            var smb = new ServiceMetadataBehavior
+            {
+                HttpGetEnabled = true,
+                MetadataExporter = {PolicyVersion = PolicyVersion.Policy15}
+            };
 
+            host.Description.Behaviors.Add(smb);
             return host;
         }
     }

@@ -7,6 +7,18 @@
       <xsd:import schemaLocation="http://localhost:6385/PerSessionWcfService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SharedLib" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IPerSessionWcfService_SleepForMilliseconds_InputMessage">
+    <wsdl:part name="parameters" element="tns:SleepForMilliseconds" />
+  </wsdl:message>
+  <wsdl:message name="IPerSessionWcfService_SleepForMilliseconds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SleepForMillisecondsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerSessionWcfService_BusySleepForMilliseconds_InputMessage">
+    <wsdl:part name="parameters" element="tns:BusySleepForMilliseconds" />
+  </wsdl:message>
+  <wsdl:message name="IPerSessionWcfService_BusySleepForMilliseconds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BusySleepForMillisecondsResponse" />
+  </wsdl:message>
   <wsdl:message name="IPerSessionWcfService_GetData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetData" />
   </wsdl:message>
@@ -20,6 +32,14 @@
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
   <wsdl:portType name="IPerSessionWcfService">
+    <wsdl:operation name="SleepForMilliseconds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerSessionWcfService/SleepForMilliseconds" message="tns:IPerSessionWcfService_SleepForMilliseconds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerSessionWcfService/SleepForMillisecondsResponse" message="tns:IPerSessionWcfService_SleepForMilliseconds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BusySleepForMilliseconds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerSessionWcfService/BusySleepForMilliseconds" message="tns:IPerSessionWcfService_BusySleepForMilliseconds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerSessionWcfService/BusySleepForMillisecondsResponse" message="tns:IPerSessionWcfService_BusySleepForMilliseconds_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IPerSessionWcfService/GetData" message="tns:IPerSessionWcfService_GetData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPerSessionWcfService/GetDataResponse" message="tns:IPerSessionWcfService_GetData_OutputMessage" />
@@ -31,6 +51,24 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IPerSessionWcfService" type="tns:IPerSessionWcfService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SleepForMilliseconds">
+      <soap:operation soapAction="http://tempuri.org/IPerSessionWcfService/SleepForMilliseconds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BusySleepForMilliseconds">
+      <soap:operation soapAction="http://tempuri.org/IPerSessionWcfService/BusySleepForMilliseconds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetData">
       <soap:operation soapAction="http://tempuri.org/IPerSessionWcfService/GetData" style="document" />
       <wsdl:input>
