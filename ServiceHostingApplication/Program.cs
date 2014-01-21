@@ -22,13 +22,16 @@ namespace ServiceHostingApplication
                 typeof (SingletonWcfService.SingletonWcfService)
             }, baseAddress);
 
-            const int messagesPerService = 3200;
+            const int messagesPerService = 5000;
             const int sleepingInMillisecondsPerCall = 100;
             const bool busyServiceCall = true;
+            const bool tasked = true;
 
             var pentester = new ServicePenetrator();
-            pentester.PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall);
-            //pentester.PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, !busyServiceCall);
+            pentester.PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall, tasked); // tasked
+            pentester.PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, busyServiceCall, !tasked); // untasked
+            pentester.PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, !busyServiceCall, tasked); // tasked
+            pentester.PenetrateServices(messagesPerService, sleepingInMillisecondsPerCall, !busyServiceCall, !tasked); // untasked
 
             ShutdownAndClose(serviceHosts);
         }

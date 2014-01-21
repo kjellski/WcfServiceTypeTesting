@@ -106,7 +106,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>6393</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:6393/</IISUrl>
+          <IISUrl>http://localhost:8080/SingletonWcfService</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

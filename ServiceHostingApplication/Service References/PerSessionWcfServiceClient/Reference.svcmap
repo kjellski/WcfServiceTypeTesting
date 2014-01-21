@@ -21,14 +21,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:6385/PerSessionWcfService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8080/PerSessionWcfService/PerSessionWcfService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PerSessionWcfService1.xsd" MetadataType="Schema" ID="72fc9e7e-a3cc-44bf-8a99-02638680e7ba" SourceId="1" SourceUrl="http://localhost:6385/PerSessionWcfService.svc?xsd=xsd1" />
-    <MetadataFile FileName="PerSessionWcfService.xsd" MetadataType="Schema" ID="5edf85c1-e31c-4da6-bb71-8038b91e52e4" SourceId="1" SourceUrl="http://localhost:6385/PerSessionWcfService.svc?xsd=xsd2" />
-    <MetadataFile FileName="PerSessionWcfService.wsdl" MetadataType="Wsdl" ID="8e8c9c60-8924-4ce8-9e1b-541c9360057c" SourceId="1" SourceUrl="http://localhost:6385/PerSessionWcfService.svc?wsdl" />
-    <MetadataFile FileName="PerSessionWcfService.disco" MetadataType="Disco" ID="811238d4-e7b8-455c-9ddb-977878af491e" SourceId="1" SourceUrl="http://localhost:6385/PerSessionWcfService.svc?disco" />
-    <MetadataFile FileName="PerSessionWcfService2.xsd" MetadataType="Schema" ID="cd333d0c-e2be-45d5-9966-7195918cfd74" SourceId="1" SourceUrl="http://localhost:6385/PerSessionWcfService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PerSessionWcfService1.wsdl" MetadataType="Wsdl" ID="753a04a5-505c-4fa6-8cf8-8d0a002cc415" SourceId="1" SourceUrl="http://localhost:8080/PerSessionWcfService/PerSessionWcfService.svc?wsdl" />
+    <MetadataFile FileName="PerSessionWcfService3.xsd" MetadataType="Schema" ID="f62ce0c6-d118-4628-b018-c5d2755fffea" SourceId="1" SourceUrl="http://localhost:8080/PerSessionWcfService/PerSessionWcfService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PerSessionWcfService31.xsd" MetadataType="Schema" ID="7e5e1d84-b5eb-4b3c-abfb-69deabfeeaa2" SourceId="1" SourceUrl="http://localhost:8080/PerSessionWcfService/PerSessionWcfService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PerSessionWcfService1.disco" MetadataType="Disco" ID="273cca91-0533-489e-9fd7-06b250bcbed8" SourceId="1" SourceUrl="http://localhost:8080/PerSessionWcfService/PerSessionWcfService.svc?disco" />
+    <MetadataFile FileName="PerSessionWcfService32.xsd" MetadataType="Schema" ID="b27c0b25-cff6-49ac-ac70-4a7f0bbeaedf" SourceId="1" SourceUrl="http://localhost:8080/PerSessionWcfService/PerSessionWcfService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

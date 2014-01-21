@@ -80,24 +80,24 @@
     <None Include="Service References\PerCallWcfServiceClient\PerCallWcfService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService.wsdl" />
-    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService.xsd">
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService1.wsdl" />
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService1.xsd">
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService2.xsd">
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService32.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService.wsdl" />
-    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService.xsd">
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService1.wsdl" />
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService1.xsd">
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService2.xsd">
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService32.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -128,6 +128,30 @@
     <WCFMetadataStorage Include="Service References\SingletonWcfServiceClient\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\PerSessionWcfServiceClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerSessionWcfServiceClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PerSessionWcfServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SingletonWcfServiceClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SingletonWcfServiceClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SingletonWcfServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Service References\PerCallWcfServiceClient\PerCallWcfService.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -143,34 +167,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService.disco" />
+    <None Include="Service References\PerSessionWcfServiceClient\PerSessionWcfService1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\PerSessionWcfServiceClient\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PerSessionWcfServiceClient\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PerSessionWcfServiceClient\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SingletonWcfServiceClient\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SingletonWcfServiceClient\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SingletonWcfServiceClient\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <None Include="Service References\SingletonWcfServiceClient\SingletonWcfService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

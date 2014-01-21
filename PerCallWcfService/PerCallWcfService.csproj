@@ -107,7 +107,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>6380</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:6380/</IISUrl>
+          <IISUrl>http://localhost:8080/PerCallWcfService</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

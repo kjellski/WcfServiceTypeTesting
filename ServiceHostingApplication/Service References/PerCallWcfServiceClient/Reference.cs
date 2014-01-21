@@ -27,6 +27,18 @@ namespace ServiceHostingApplication.PerCallWcfServiceClient {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerCallWcfService/BusySleepForMilliseconds", ReplyAction="http://tempuri.org/IPerCallWcfService/BusySleepForMillisecondsResponse")]
         System.Threading.Tasks.Task<System.Guid> BusySleepForMillisecondsAsync(int ms, System.Guid guid);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerCallWcfService/TaskedSleepForMilliseconds", ReplyAction="http://tempuri.org/IPerCallWcfService/TaskedSleepForMillisecondsResponse")]
+        System.Guid TaskedSleepForMilliseconds(int ms, System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerCallWcfService/TaskedSleepForMilliseconds", ReplyAction="http://tempuri.org/IPerCallWcfService/TaskedSleepForMillisecondsResponse")]
+        System.Threading.Tasks.Task<System.Guid> TaskedSleepForMillisecondsAsync(int ms, System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerCallWcfService/TaskedBusySleepForMilliseconds", ReplyAction="http://tempuri.org/IPerCallWcfService/TaskedBusySleepForMillisecondsResponse")]
+        System.Guid TaskedBusySleepForMilliseconds(int ms, System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerCallWcfService/TaskedBusySleepForMilliseconds", ReplyAction="http://tempuri.org/IPerCallWcfService/TaskedBusySleepForMillisecondsResponse")]
+        System.Threading.Tasks.Task<System.Guid> TaskedBusySleepForMillisecondsAsync(int ms, System.Guid guid);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerCallWcfService/GetData", ReplyAction="http://tempuri.org/IPerCallWcfService/GetDataResponse")]
         string GetData(int value);
         
@@ -81,6 +93,22 @@ namespace ServiceHostingApplication.PerCallWcfServiceClient {
         
         public System.Threading.Tasks.Task<System.Guid> BusySleepForMillisecondsAsync(int ms, System.Guid guid) {
             return base.Channel.BusySleepForMillisecondsAsync(ms, guid);
+        }
+        
+        public System.Guid TaskedSleepForMilliseconds(int ms, System.Guid guid) {
+            return base.Channel.TaskedSleepForMilliseconds(ms, guid);
+        }
+        
+        public System.Threading.Tasks.Task<System.Guid> TaskedSleepForMillisecondsAsync(int ms, System.Guid guid) {
+            return base.Channel.TaskedSleepForMillisecondsAsync(ms, guid);
+        }
+        
+        public System.Guid TaskedBusySleepForMilliseconds(int ms, System.Guid guid) {
+            return base.Channel.TaskedBusySleepForMilliseconds(ms, guid);
+        }
+        
+        public System.Threading.Tasks.Task<System.Guid> TaskedBusySleepForMillisecondsAsync(int ms, System.Guid guid) {
+            return base.Channel.TaskedBusySleepForMillisecondsAsync(ms, guid);
         }
         
         public string GetData(int value) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5e3b7d42-022f-413c-b695-1a244540618d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dc68d6c9-da0a-480b-bf48-1df039c40ae7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -21,14 +21,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:6380/PerCallWcfService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8080/PerCallWcfService/PerCallWcfService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PerCallWcfService.wsdl" MetadataType="Wsdl" ID="ca3ed040-fe68-4ac9-aca9-ee15a5c1e32e" SourceId="1" SourceUrl="http://localhost:6380/PerCallWcfService.svc?wsdl" />
-    <MetadataFile FileName="PerCallWcfService.disco" MetadataType="Disco" ID="3fe2bdf2-9c2a-4943-bc53-bbb7d65837f7" SourceId="1" SourceUrl="http://localhost:6380/PerCallWcfService.svc?disco" />
-    <MetadataFile FileName="PerCallWcfService.xsd" MetadataType="Schema" ID="5328bc80-481c-475c-b28f-81309424c417" SourceId="1" SourceUrl="http://localhost:6380/PerCallWcfService.svc?xsd=xsd1" />
-    <MetadataFile FileName="PerCallWcfService1.xsd" MetadataType="Schema" ID="fa824f3a-0f89-4373-86f5-be393d7abf07" SourceId="1" SourceUrl="http://localhost:6380/PerCallWcfService.svc?xsd=xsd2" />
-    <MetadataFile FileName="PerCallWcfService2.xsd" MetadataType="Schema" ID="1d9266fe-8519-4724-8b5f-c2261ed1ae12" SourceId="1" SourceUrl="http://localhost:6380/PerCallWcfService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PerCallWcfService.disco" MetadataType="Disco" ID="aa0d7ec3-5ca0-42cc-b9f2-7c318f64e8ff" SourceId="1" SourceUrl="http://localhost:8080/PerCallWcfService/PerCallWcfService.svc?disco" />
+    <MetadataFile FileName="PerCallWcfService.xsd" MetadataType="Schema" ID="040b32ac-7d04-4529-8f19-396062a5b38f" SourceId="1" SourceUrl="http://localhost:8080/PerCallWcfService/PerCallWcfService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PerCallWcfService1.xsd" MetadataType="Schema" ID="278a6135-be73-4a93-9fe9-36377b024e2c" SourceId="1" SourceUrl="http://localhost:8080/PerCallWcfService/PerCallWcfService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PerCallWcfService.wsdl" MetadataType="Wsdl" ID="715ea5b5-7277-4c7e-bd49-d37bfe100166" SourceId="1" SourceUrl="http://localhost:8080/PerCallWcfService/PerCallWcfService.svc?wsdl" />
+    <MetadataFile FileName="PerCallWcfService2.xsd" MetadataType="Schema" ID="5690fe01-4175-4828-bbd4-ebbec1189ed8" SourceId="1" SourceUrl="http://localhost:8080/PerCallWcfService/PerCallWcfService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

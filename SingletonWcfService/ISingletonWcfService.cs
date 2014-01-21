@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Threading.Tasks;
 using SharedLib;
 
 namespace SingletonWcfService
@@ -14,6 +15,12 @@ namespace SingletonWcfService
 
         [OperationContract]
         Guid BusySleepForMilliseconds(int ms, Guid guid);
+
+        [OperationContract]
+        Task<Guid> TaskedSleepForMilliseconds(int ms, Guid guid);
+
+        [OperationContract]
+        Task<Guid> TaskedBusySleepForMilliseconds(int ms, Guid guid);
 
         [OperationContract]
         string GetData(int value);

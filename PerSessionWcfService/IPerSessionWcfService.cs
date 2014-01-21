@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 using SharedLib;
 
 namespace PerSessionWcfService
@@ -18,6 +19,12 @@ namespace PerSessionWcfService
 
         [OperationContract]
         Guid BusySleepForMilliseconds(int ms, Guid guid);
+
+        [OperationContract]
+        Task<Guid> TaskedSleepForMilliseconds(int ms, Guid guid);
+
+        [OperationContract]
+        Task<Guid> TaskedBusySleepForMilliseconds(int ms, Guid guid);
 
         [OperationContract]
         string GetData(int value);

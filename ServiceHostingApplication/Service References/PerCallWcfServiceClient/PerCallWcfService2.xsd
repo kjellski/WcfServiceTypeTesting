@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:6380/PerCallWcfService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://localhost:6380/PerCallWcfService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SharedLib" />
+  <xs:import schemaLocation="http://localhost:8080/PerCallWcfService/PerCallWcfService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:8080/PerCallWcfService/PerCallWcfService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SharedLib" />
   <xs:element name="SleepForMilliseconds">
     <xs:complexType>
       <xs:sequence>
@@ -32,6 +32,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="TaskedSleepForMilliseconds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ms" type="xs:int" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="guid" type="q5:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TaskedSleepForMillisecondsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="TaskedSleepForMillisecondsResult" type="q6:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TaskedBusySleepForMilliseconds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ms" type="xs:int" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="guid" type="q7:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TaskedBusySleepForMillisecondsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="TaskedBusySleepForMillisecondsResult" type="q8:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -49,14 +79,14 @@
   <xs:element name="GetDataUsingDataContract">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SharedLib" minOccurs="0" name="composite" nillable="true" type="q5:CompositeType" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SharedLib" minOccurs="0" name="composite" nillable="true" type="q9:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetDataUsingDataContractResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SharedLib" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q6:CompositeType" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SharedLib" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q10:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

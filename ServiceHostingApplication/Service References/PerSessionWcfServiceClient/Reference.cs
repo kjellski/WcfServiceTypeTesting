@@ -27,6 +27,18 @@ namespace ServiceHostingApplication.PerSessionWcfServiceClient {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerSessionWcfService/BusySleepForMilliseconds", ReplyAction="http://tempuri.org/IPerSessionWcfService/BusySleepForMillisecondsResponse")]
         System.Threading.Tasks.Task<System.Guid> BusySleepForMillisecondsAsync(int ms, System.Guid guid);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerSessionWcfService/TaskedSleepForMilliseconds", ReplyAction="http://tempuri.org/IPerSessionWcfService/TaskedSleepForMillisecondsResponse")]
+        System.Guid TaskedSleepForMilliseconds(int ms, System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerSessionWcfService/TaskedSleepForMilliseconds", ReplyAction="http://tempuri.org/IPerSessionWcfService/TaskedSleepForMillisecondsResponse")]
+        System.Threading.Tasks.Task<System.Guid> TaskedSleepForMillisecondsAsync(int ms, System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerSessionWcfService/TaskedBusySleepForMilliseconds", ReplyAction="http://tempuri.org/IPerSessionWcfService/TaskedBusySleepForMillisecondsResponse")]
+        System.Guid TaskedBusySleepForMilliseconds(int ms, System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerSessionWcfService/TaskedBusySleepForMilliseconds", ReplyAction="http://tempuri.org/IPerSessionWcfService/TaskedBusySleepForMillisecondsResponse")]
+        System.Threading.Tasks.Task<System.Guid> TaskedBusySleepForMillisecondsAsync(int ms, System.Guid guid);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPerSessionWcfService/GetData", ReplyAction="http://tempuri.org/IPerSessionWcfService/GetDataResponse")]
         string GetData(int value);
         
@@ -81,6 +93,22 @@ namespace ServiceHostingApplication.PerSessionWcfServiceClient {
         
         public System.Threading.Tasks.Task<System.Guid> BusySleepForMillisecondsAsync(int ms, System.Guid guid) {
             return base.Channel.BusySleepForMillisecondsAsync(ms, guid);
+        }
+        
+        public System.Guid TaskedSleepForMilliseconds(int ms, System.Guid guid) {
+            return base.Channel.TaskedSleepForMilliseconds(ms, guid);
+        }
+        
+        public System.Threading.Tasks.Task<System.Guid> TaskedSleepForMillisecondsAsync(int ms, System.Guid guid) {
+            return base.Channel.TaskedSleepForMillisecondsAsync(ms, guid);
+        }
+        
+        public System.Guid TaskedBusySleepForMilliseconds(int ms, System.Guid guid) {
+            return base.Channel.TaskedBusySleepForMilliseconds(ms, guid);
+        }
+        
+        public System.Threading.Tasks.Task<System.Guid> TaskedBusySleepForMillisecondsAsync(int ms, System.Guid guid) {
+            return base.Channel.TaskedBusySleepForMillisecondsAsync(ms, guid);
         }
         
         public string GetData(int value) {
